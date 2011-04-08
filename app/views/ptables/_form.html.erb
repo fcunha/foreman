@@ -1,0 +1,17 @@
+<% form_for @ptable do |f| %>
+  <%= f.error_messages %>
+  <p class="span-24">
+  <%= f.label :name, nil, :class => "span-3" %>
+  <%= f.text_field :name, :class => "span-5" %>
+  </p>
+  <p class="span-24">
+  <%= f.label :layout, nil, :class => "span-3" %>
+  <%= f.text_area :layout, :class => "span-15 last" %>
+  </p>
+  <p>
+  <% field_set_tag("Valid operating systems") do %>
+    <%= authorized_edit_habtm @ptable, Operatingsystem %>
+  <% end %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

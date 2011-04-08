@@ -1,0 +1,18 @@
+etc/foreman/database.yml	usr/share/foreman/config/database.yml
+etc/foreman/email.yaml		usr/share/foreman/config/email.yaml
+etc/foreman/settings.yaml	usr/share/foreman/config/settings.yaml
+var/cache/foreman		usr/share/foreman/tmp
+var/lib/foreman/db		usr/share/foreman/db
+var/log/foreman			usr/share/foreman/log
+var/lib/foreman/public		usr/share/foreman/public
+
+# Link to libjs-prototype
+usr/share/javascript/prototype/prototype.js	var/lib/foreman/public/javascripts/prototype.js
+usr/share/javascript/prototype/prototype.js	usr/share/foreman/vendor/plugins/has_many_polymorphs/test/integration/app/public/javascripts/prototype.js
+usr/share/javascript/prototype/prototype.js	usr/share/foreman/vendor/rails/actionpack/test/fixtures/public/javascripts/prototype.js
+usr/share/javascript/prototype/prototype.js	usr/share/foreman/vendor/rails/railties/html/javascripts/prototype.js
+
+# Link to libjs-scriptaculous
+usr/share/javascript/scriptaculous/controls.js var/lib/foreman/public/javascripts/controls.js
+usr/share/javascript/scriptaculous/dragdrop.js var/lib/foreman/public/javascripts/dragdrop.js
+usr/share/javascript/scriptaculous/effects.js var/lib/foreman/public/javascripts/effects.js

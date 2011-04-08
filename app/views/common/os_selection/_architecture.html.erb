@@ -1,0 +1,9 @@
+<%= label_tag "#{item}_operatingsystem_id", "Operating System", :class => "span-4" %>
+<%= collection_select(:item, :operatingsystem_id, @architecture.operatingsystems, :id, :to_label,
+                      {:include_blank => true, :selected => item.operatingsystem_id},
+                      {:id => type + "_operatingsystem_id", :name => type + "[operatingsystem_id]", :class => "span-3"}) %>
+
+<%= observe_field type + "_operatingsystem_id",
+    :url => { :action => :os_selected },
+    :update => :operatingsystem_select,
+    :with => :operatingsystem_id %>

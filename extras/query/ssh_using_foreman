@@ -1,0 +1,90 @@
+#!/usr/bin/ruby
+
+require "foreman.rb"
+require 'optparse'
+class NilClass; def empty?; true; end; end
+begin
+  require 'rubygems'
+  require 'net/ssh/multi'
+rescue LoadError => detail
+  warn "failed to load ssh_multi library - try: gem install net-ssh-multi"
+  exit 1
+end
+
+options = {}
+optparse = OptionParser.new do |opts|
+  # Set a banner, displayed at the top
+  # of the help screen.
+  opts.define_head "execute commands on multiple hosts
+  Query Foreman to provide host list based on collections of facts and classes"
+  opts.banner = "Usage: #{$0}"
+  opts.separator ""
+
+   # Define the options, and what they do
+  options[:command] = ""
+  opts.on( '-c', '--command CMD', 'command to execute' ) do |cmd|
+    options[:command] = cmd
+  end
+  options[:user] = "root"
+  opts.on( '-u', '--user USER', "User to use - defaults to #{options[:user]}" ) do |user|
+    options[:user] = user
+  end
+
+  options[:facts] = {}
+  opts.on( '-f', '--facts fact=x,fact=y..', 'one or more facts to filter the host list' ) do |facts|
+    facts.split(",").each do |f|
+      name, value = f.split("=")
+      options[:facts].merge!({ name => value })
+    end
+  end
+
+  options[:klass] = []
+  opts.on( '-p', '--puppetclass CLASSA,CLASSB', 'one or more classes to filter the host list') do |k|
+    options[:klass] = k.split(",")
+  end
+
+  options[:state] = "active"
+  opts.on( '-s', '--state STATE', "Filter base of host state - active,out_of_sync all defaults to active hosts" ) do |state|
+    options[:state] = state
+  end
+
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end
+
+optparse.parse!
+
+if options[:command].empty? or (options[:facts].empty? and options[:class].empty?)
+  puts optparse
+  exit 1
+end
+
+unless ARGV.empty?
+  warn "unkonwn parameter #{ARGV.join(" ")}"
+  exit 1
+end
+
+puts "About to execute: #{options[:command]}"
+query = {"state" => options[:state]}
+query.merge!({"fact" => options[:facts]}) unless options[:facts].empty?
+query.merge!({"class" => options[:klass]}) unless options[:klass].empty?
+
+hosts = gethosts query
+
+if hosts.nil?
+  warn "unable to find any hosts"
+  exit 1
+end
+puts "on the following #{hosts.size} hosts: #{hosts.join(" ")}"
+puts "ctrl-c to abort or any key to continue"
+$stdin.gets
+
+ssh_options = {:user => options[:user], :auth_methods => "publickey"}
+
+Net::SSH::Multi.start(:on_error => :warn) do |session|
+  hosts.each { |s| session.use s, ssh_options }
+  session.exec options[:command]
+  session.loop
+end

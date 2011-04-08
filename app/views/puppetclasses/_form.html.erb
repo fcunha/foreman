@@ -1,0 +1,23 @@
+<% form_for @puppetclass do |f| %>
+  <%= f.error_messages %>
+  <p>
+  <%= f.label :name, nil, :class => "span-3" %>
+  <%= f.text_field :name, :class => "last" %>
+  </p>
+  <p>
+  <% field_set_tag("Puppet Environments") do %>
+    <%= authorized_edit_habtm @puppetclass, Environment %>
+  <% end -%>
+  </p>
+  <% field_set_tag("Host Groups") do %>
+    <p>
+    <%= authorized_edit_habtm @puppetclass, Hostgroup %>
+    </p>
+  <% end -%>
+  <% unless @puppetclass.new_record? -%>
+    <p>
+    Currently used by <%= @puppetclass.hosts.count %> hosts
+    </p>
+  <% end -%>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

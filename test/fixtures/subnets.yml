@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+   name: one
+   network: 2.3.4.0
+   mask: 255.255.255.0
+   domain: mydomain.net
+   dhcp: one
+   tftp: one
+
+two:
+   name: two
+   network: 3.3.4.0
+   mask: 255.255.255.0
+   domain: yourdomain.net
+   dhcp: one
+   tftp: one

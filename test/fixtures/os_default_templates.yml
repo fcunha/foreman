@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  config_template: mystring
+  template_kind: gpxe
+  operatingsystem: centos5_3
+
+two:
+  config_template: mystring2
+  template_kind: provision
+  operatingsystem: centos5_3
+
+three:
+  config_template: myscript
+  template_kind:  script
+  operatingsystem: centos5_3
+
+four:
+  config_template: pxekickstart
+  template_kind: PXELinux
+  operatingsystem: centos5_3

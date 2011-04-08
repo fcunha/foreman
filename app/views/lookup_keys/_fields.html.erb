@@ -1,0 +1,9 @@
+<%= error_messages_for :lookup_key %>
+<p>
+<%= f.label :key, "Key" %>
+<%= f.text_field :key %>
+</p>
+<% f.fields_for :lookup_values do |builder| -%>
+  <%= render 'value', :f => builder %>
+<% end -%>
+<p><%= authorized_for(params[:controller], params[:action]) ? link_to_add_fields("Add a value", f, :lookup_values, "value") : "Add a value" %></p>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: CentOS 5.4
+  path: http://mirror.averse.net/centos/6.0/os/$arch
+
+ubuntu:
+  name: Ubuntu Mirror
+  path: http://sg.archive.ubuntu.com
+
+unused:
+  name: unused
+  path: http://nothing.intersting.com

@@ -1,0 +1,31 @@
+<% title "Users" %>
+
+<div class="title_action"><%= display_link_if_authorized "New User", hash_for_new_user_path %></div>
+
+<table class="list">
+  <tr>
+    <th><%= order @search, :by => :login %></th>
+    <th><%= order @search, :by => :firstname %></th>
+    <th><%= order @search, :by => :lastname %></th>
+    <th>Mail</th>
+    <th>Administrator</th>
+    <th><%= order @search, :by => :last_login_on %></th>
+    <th>Authorized by</th>
+    <th></th>
+  </tr>
+  <% for user in @users %>
+    <tr class="<%= cycle("even", "odd")-%>" >
+      <td><%=link_to_if_authorized h(user.login), hash_for_edit_user_path(:id => user) %></td>
+      <td><%=h user.firstname %></td>
+      <td><%=h user.lastname %></td>
+      <td><%=h user.mail %></td>
+      <td><%=checked_icon user.admin? %></td>
+      <td><%=h last_login_on_column(user)%></td>
+      <td><%=h auth_source_column(user)%></td>
+      <td><%= display_link_if_authorized "Destroy", hash_for_user_path(:id => user, :auth_action => :destroy), :confirm => "Delete #{user.name}?", :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= page_entries_info @users %>
+<%= will_paginate @users %>

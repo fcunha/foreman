@@ -1,0 +1,493 @@
+* {margin:0;padding:0;} 
+
+/* must declare 0 margins on everything, also for main layout components use padding, not 
+vertical margins (top and bottom) to add spacing, else those margins get added to total height 
+and your footer gets pushed down a bit more, creating vertical scroll bars in the browser */
+
+html, body {height: 100%;}
+
+#wrap {min-height: 100%;}
+
+#main {overflow:auto;
+	padding-bottom: 50px;}  /* must be same height as the footer */
+
+#footer {position: relative;
+	margin-top: -50px; /* negative value of footer height */
+	height: 50px;
+	clear:both;
+	color: #000;
+	background: url(../images/header_bg.png) repeat-x 0 -10%;
+} 
+#footer p {
+	line-height: 1em;
+	margin: 0 !important;
+	padding: 1em;
+}
+
+body:before {
+content:"";
+height:100%;
+float:left;
+width:0;
+margin-top:-32767px;
+}
+
+/* IMPORTANT
+
+<!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
+*/
+
+
+body {
+  font-family: Verdana, Helvetica, Arial;
+  color:#484848;
+  margin: 0;
+  padding: 0;
+  background-color: #EDF3EF !important;
+}
+a img {
+  border: none;
+}
+
+a {
+  color: #0000FF;
+}
+
+th.underlined {
+  text-decoration: underline
+}
+a:link, a:visited {
+  color: #507EA1;
+}
+a:active {
+  color: #3082BF;
+}
+
+input {
+  margin-bottom: 1px;
+}
+p {
+  line-height: 130%;
+}
+fieldset {
+  border: 2px solid #D9E1E3;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 0 0 15px 0;
+  padding: 8px 8px 8px 14px;
+}
+fieldset legend {
+  border: 2px solid #D9E1E3;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-left: 18px;  
+  padding: 4px;
+}
+fieldset fieldset {
+  margin: 12px;
+}
+.half {
+	width: 44%;
+}
+#header {
+	height:5em;
+	background-color:#FFF;
+	color:#000; 
+	position:relative; 
+	padding-bottom: 8px;
+	background: url(../images/header_bg.png) repeat-x;
+}
+
+#header a {
+  float:right;
+  margin-right: 0.5em;
+  color: #000;
+  font-weight: bold;
+}
+
+#header .title {
+  color:#FFFAFA;
+  text-transform:uppercase;
+  text-indent: -40000px;
+  background: url(../images/foreman.png) no-repeat left top;
+  height: 47px;
+}
+#menu {
+	margin-left: 10px;
+}
+#menu a {
+	color: #FFF;
+}
+#menu ul {
+  margin: 0; padding: 0;
+  list-style: none;
+  float: left;
+}
+
+#menu li {
+  float:left;
+  list-style-type:none;
+  text-transform:uppercase;
+  padding: 4px 10px 4px 10px;
+  height:1.2em;
+  color: #7F9BB1;
+}
+#menu li .entry{
+}
+#menu li span {
+}
+#content {
+  position:relative;
+  padding: 1%;
+  clear: both;
+}
+#content br{
+  clear:both;
+}
+#content h3 {
+  margin-top: 15px;
+}
+
+#footer {
+  clear: both;
+  font-size: 0.9em;
+  text-align:center;
+}
+
+#login-form {
+  text-align: center;
+  width: 390px;
+  margin: 0 auto;
+}
+#login-form table {margin-top:2em; padding:1em; margin-left: auto; margin-right: auto; border: 2px solid #FDBF3B; background-color:#FFEBC1; }
+#login-form table td {padding: 6px;text-align: center;}
+#login-form label {font-weight: bold;}
+
+/***** Flash & error messages ****/
+#errorExplanation, div.flash, .nodata, .warning {
+  padding: 4px 4px 4px 30px;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+  border: 2px solid;
+}
+
+div.flash {
+  margin: 15px 15px 0 15px;
+}
+
+div.flash.error, #errorExplanation {
+  background: url(../images/false.png) 8px 5px no-repeat;
+  background-color: #ffe3e3;
+  border-color: #dd0000;
+  color: #550000;
+}
+
+div.flash.notice {
+  background: url(../images/true.png) 8px 5px no-repeat;
+  background-color: #dfffdf;
+  border-color: #9fcf9f;
+  color: #005f00;
+}
+
+.nodata, .warning {
+  text-align: center;
+  background-color: #FFEBC1;
+  border-color: #FDBF3B;
+  color: #A6750C;
+}
+
+#errorExplanation ul { font-size: 0.9em;}
+
+/* rails error message */
+.error-messages {
+  background: #BC1C3D;
+  border: 1px solid #900024;
+  padding: 15px 30px;
+  color: white;
+  margin-bottom: 20px;
+}
+.error-messages h2 {
+  color: white; margin-top: 0; padding-bottom: 0; font-size: 16px;
+}
+.error-messages li {margin-left: 20px; list-style: square;}
+
+.field-with-errors input, .field-with-errors textarea, .field-with-errors select {border: 2px solid #BC1C3D;}
+
+/* Tables */
+
+table.list { border: 1px solid #e4e4e4;  border-collapse: collapse; width: 100%; margin:1em auto;}
+table.list th {
+  text-decoration:none;
+  text-align:left;
+  background:#455054;
+  color:#FFFFFF;
+}
+table.list th p {
+  display:block;
+  font:bold 11px arial,sans-serif;
+}
+table.list th a, th a:visited {
+  padding:2px 15px 2px 5px;
+  color:#FFFFFF;
+}
+
+table.list td, th { line-height:1.3em; }
+table.list td { vertical-align: top; border: 1px #eeeeee solid; padding: 4px }
+table.list td.id { width: 2%; text-align: center;}
+table.list td.checkbox { width: 15px; padding: 0px;}
+table.list tbody tr:hover { background-color:#ffffaa; }
+table.list caption {
+  text-align: center;
+  font-size: 125%;
+  padding: .75em;
+  color: #000;
+}
+
+table td {padding:2px;}
+table p {margin:0;}
+.odd {background-color:#f6f7f8;}
+.even {background-color: #fff;}
+
+.fieldWithErrors input,
+.fieldWithErrors label,
+.fieldWithErrors textarea,
+.fieldWithErrors select {
+  border: solid 1px #f00;
+}
+
+/* host show page */
+#title, td.last_row { font-weight: bold; }
+
+#host_overview {
+  position: relative;
+  float:right;
+  width:30%
+}
+#host_overview table { border: 1px solid #ccc; }
+
+#host_overview table th{ text-align: left; }
+
+.pagination { float: right }
+
+#host_report {
+  position: relative;
+  float: left;
+  width:70%
+}
+#border-it { border: 2px solid #ddd; }
+
+#dashboard div{
+  position: relative;
+  text-align: center;
+}
+div#dash {
+  padding: 10px;
+  background-color: #EDF3EF;
+  margin: 0 auto 10px auto;
+  display: block;
+  width: 790px;
+}
+#dash p {
+  margin: 0 0 0.3em;
+}
+#dashwrap {
+  margin: 0 auto;
+  width: 810px;
+}
+div#overview {
+  width: 400px;
+  float: left;
+  margin-right: 10px;
+}
+div#run_distribution {
+  width: 400px;
+  float: left;
+}
+
+#hostclasses, #classes li {
+  list-style-type:none;
+  margin-right: 0.5em;
+}
+
+#classes .puppetclass a {
+  font-size: 75%;
+  color: #333;
+}
+
+#content .title_action {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+#searchbar {
+  border-bottom: 2px solid #D9E1E3;
+  background-color: #ECF0F3;
+  height: 2.0em;
+  padding: 0.3em;
+}
+#searchbar div {
+  display:inline;
+}
+#searchbar ul {
+  margin: 0; padding: 0;
+  list-style: none;
+  float: left;
+  width: 100%;
+}
+
+#searchbar li {
+  float:left;
+  padding-right: 4px;
+  list-style-type:none;
+}
+#searchbar li .selectedtab {
+  padding-right: 4px;
+  background-color:#e4e4e4;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#searchbar li a.close{
+  color: red;
+  padding-left: 1px;
+  padding-top: 1px;
+  padding-bottom: 7px;
+  text-decoration: none;
+}
+#searchbar li a {
+  display: block;
+  float:left;
+  color: #484848;
+  font-weight: bold;
+  margin: 0;
+  padding: 4px 4px 4px 10px;
+}
+/* Maybe someone else can ge ths hovering to work esthetically
+#searchbar li a:hover {background:#759FCF; color:#fff;}
+#searchbar li a.active, li a.selected:hover {background:#fff; color:#555;}
+
+#searchbar li a.close:hover {background:#e4e4e4; color:red;}
+#searchbar li a.active, li a.selected:hover {background:#fff; color:#555;}
+ */
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+#searchtab {
+  margin: 3px;
+  float:right;
+}
+
+#settings li {
+  list-style-type:none;
+  padding:0 0 8px;
+}
+#welcome {
+    background-color: #ECF0F3;
+    margin: 20px auto 0;
+    padding: 15px;
+}
+/***** Tabular forms ******/
+.tabular p{
+  margin: 0;
+  padding: 5px 0 8px 0;
+  padding-left: 180px; /*width of left column containing the label elements*/
+  height: 1%;
+  clear:left;
+}
+
+html>body .tabular p {overflow:hidden;}
+
+.tabular label{
+  font-weight: bold;
+  float: left;
+  text-align: right;
+  margin-left: -180px; /*width of left column*/
+  width: 175px; /*width of labels. Should be smaller than left column to create some right
+  margin*/
+}
+
+.tabular label.floating{
+  font-weight: normal;
+  margin-left: 0px;
+  text-align: left;
+  width: 180px;
+}
+
+.tabular label.block{
+  font-weight: normal;
+  margin-left: 0px !important;
+  text-align: left;
+  float: none;
+  display: block;
+  width: auto;
+}
+
+.tabular fieldset { border: 1px solid #E9f1d1}
+
+.tabular.settings p{ padding-left: 300px; }
+.tabular.settings label{ margin-left: -300px; width: 295px; }
+.tabular.settings textarea { width: 99%; }
+
+fieldset.settings label { display: block; }
+
+.required {color: #bb0000;}
+.summary {font-style: italic;}
+
+tr span.expander {background-image: url(../images/bullet_toggle_plus.png); padding-left: 8px; margin-left: 0; cursor: pointer;}
+tr.open span.expander {background-image: url(../images/bullet_toggle_minus.png);}
+
+/* buttons */
+.clear { /* generic container (i.e. div) for floating buttons */
+    overflow: hidden;
+    width: 100%;
+}
+a.button {
+    background: transparent url('../images/button_right.png') no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+}
+a.button span {
+    background: transparent url('../images/button_left.png') no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 18px;
+}
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+}
+
+.nomargin {
+  margin: none;
+}
+
+/* text align left */
+.la { text-align: left; }
+/* text align right */
+.ra { text-align: right; }
+/* text align center */
+.ca { text-align: center; }
+/* float  right */
+.fr { float: right; }
+/* float left */
+.fl { float: left; }

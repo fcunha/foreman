@@ -1,0 +1,12 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+common:
+  name: Common
+  architecture: x86_64
+  ptable: one
+  environment: production
+  operatingsystem: centos5_3
+  medium: one
+
+unusual:
+  name: Unusual

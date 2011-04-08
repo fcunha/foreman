@@ -1,0 +1,24 @@
+<% title "Usergroups" %>
+
+<div class="title_action"><%= display_link_if_authorized "New Usergroup", hash_for_new_usergroup_path %></div>
+
+<table class="list">
+  <tr>
+    <th>Name</th>
+    <th>Users</th>
+    <th>User Groups</th>
+    <th></th>
+  </tr>
+  <% for usergroup in @usergroups %>
+    <tr class="<%= cycle("even", "odd") -%>">
+      <td><%= link_to_if_authorized h(usergroup.name), hash_for_edit_usergroup_path(:id => usergroup.id) %></td>
+      <td><%= h usergroup.users.map(&:login).to_sentence %></td>
+      <td><%= h usergroup.usergroups.map(&:name).to_sentence %></td>
+      <td class="ra">
+        <%= display_link_if_authorized "Destroy", hash_for_usergroup_path(:id => usergroup, :auth_action => :destroy), :confirm => "Delete #{usergroup.name}?", :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= page_entries_info @usergroups %>
+<%= will_paginate @usergroups %>
